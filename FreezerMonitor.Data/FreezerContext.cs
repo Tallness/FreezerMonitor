@@ -11,10 +11,10 @@ namespace FreezerMonitor.Data
 {
     public class FreezerContext : DbContext
     {
-        public FreezerContext(String nameOrConnectionString)
-            : base(new SQLiteConnection() {ConnectionString = nameOrConnectionString}, true)
+        public FreezerContext(String connectionString)
+            : base(new SQLiteConnection() {ConnectionString = connectionString}, true)
         {
-            Debug.WriteLine(nameOrConnectionString);
+            Debug.WriteLine(connectionString);
         }
 
         public DbSet<TemperatureReading> TemperatureReadings { get; set; }
