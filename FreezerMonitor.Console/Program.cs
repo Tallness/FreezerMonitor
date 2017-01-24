@@ -16,17 +16,20 @@ namespace FreezerMonitor.TestConsole
             {
                 var sensors = context.TemperatureReadings
                     .OrderByDescending(r => r.Timestamp)
-                    .Take(40)
+                    //.Take(40)
                     .GroupBy(r => r.SensorID);
 
                 foreach (var sensor in sensors)
                 {
+                    var f = String.Format(".\\{0}", sensor.Key);
+
                     Console.WriteLine("Sensor {0}", sensor.Key);
                     foreach (var reading in sensor)
                     {
-                        Console.WriteLine("   Temp: {0}  --  {1:F2}", reading.Timestamp.ToLocalTime(), reading.Temperature);
+                        //Console.WriteLine("   Temp: {0}  --  {1:F2}", reading.Timestamp.ToLocalTime(), reading.Temperature);
+                        File.AppendAllText(f, String.Format("{0},{1}\n", reading.Timestamp, reading.Temperature));
                     }
-                    Console.WriteLine();
+                    Console.WriteLine("  Records written to: {0}", f);
                 }
             }
             Console.ReadLine();
