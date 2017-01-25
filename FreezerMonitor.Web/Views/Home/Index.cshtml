@@ -44,6 +44,7 @@
         .y(function (data) { return y(data.temperature); });
 
     // Parse file and display
+    d3.csv('@Url.Action("Log", "Home", new { id = "031685a74bff" })', function (data) {
         console.log(data);
         data.timestamp = parseTime(data.timestamp);
         data.temperature = +data.temperature;
@@ -80,6 +81,7 @@
             .attr("d", line);
     });
 
+    d3.csv('@Url.Action("Log", "Home", new { id = "03168a1eedff" })', function (data) {
         console.log(data);
         data.timestamp = parseTime(data.timestamp);
         data.temperature = +data.temperature;
