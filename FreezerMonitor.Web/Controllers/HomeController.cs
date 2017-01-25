@@ -15,7 +15,7 @@ namespace FreezerMonitor.Web.Controllers
         {
             using (var context = new FreezerContext("Data Source=C:\\temp\\freezer_temps.sqlite"))
             {
-                var startDate = DateTime.Now.AddDays(-2);
+                var startDate = new DateTime(2017,1,18);
                 var sensors = context.TemperatureReadings
                     .Where(r => r.Timestamp >= startDate)
                     .OrderBy(r => r.SensorID)
