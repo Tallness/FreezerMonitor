@@ -24,6 +24,7 @@ namespace FreezerMonitor.TestConsole
                     var f = String.Format(".\\{0}", sensor.Key);
 
                     Console.WriteLine("Sensor {0}", sensor.Key);
+                    File.AppendAllText(f, "timestamp,temperature\n");
                     foreach (var reading in sensor)
                     {
                         //Console.WriteLine("   Temp: {0}  --  {1:F2}", reading.Timestamp.ToLocalTime(), reading.Temperature);
