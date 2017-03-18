@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FreezerMonitor.Data
+namespace FreezerMonitor.SqliteData
 {
     public class FreezerContext : DbContext
     {

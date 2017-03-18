@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using FreezerMonitor.Data;
+using FreezerMonitor.SqliteData;
 
 namespace FreezerMonitor.Web.Models
 {

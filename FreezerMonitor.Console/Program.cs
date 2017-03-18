@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FreezerMonitor.Data;
+using FreezerMonitor.SqliteData;
 
 namespace FreezerMonitor.TestConsole
 {
