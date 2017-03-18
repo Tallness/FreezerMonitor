@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreezerMonitor.Data", "FreezerMonitor.Data\FreezerMonitor.Data.csproj", "{882BCEF0-49D1-4AFE-A785-2E6B4859B3D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreezerMonitor.SqliteData", "FreezerMonitor.SqliteData\FreezerMonitor.SqliteData.csproj", "{882BCEF0-49D1-4AFE-A785-2E6B4859B3D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreezerMonitor.TestConsole", "FreezerMonitor.Console\FreezerMonitor.TestConsole.csproj", "{4FABB919-B7F1-488D-8CEA-EA8A2554B0C8}"
 EndProject

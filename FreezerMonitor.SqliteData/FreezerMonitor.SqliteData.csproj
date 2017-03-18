@@ -7,8 +7,8 @@
     <ProjectGuid>{882BCEF0-49D1-4AFE-A785-2E6B4859B3D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FreezerMonitor.Data</RootNamespace>
-    <AssemblyName>FreezerMonitor.Data</AssemblyName>
+    <RootNamespace>FreezerMonitor.SqliteData</RootNamespace>
+    <AssemblyName>FreezerMonitor.SqliteData</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

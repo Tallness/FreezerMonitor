@@ -212,9 +212,9 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FreezerMonitor.Data\FreezerMonitor.Data.csproj">
+    <ProjectReference Include="..\FreezerMonitor.SqliteData\FreezerMonitor.SqliteData.csproj">
       <Project>{882bcef0-49d1-4afe-a785-2e6b4859b3d2}</Project>
-      <Name>FreezerMonitor.Data</Name>
+      <Name>FreezerMonitor.SqliteData</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
