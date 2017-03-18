@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreezerMonitor.Web", "Freez
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FreezerMonitor.Database", "FreezerMonitor.Database\FreezerMonitor.Database.sqlproj", "{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreezerMonitor.Data", "FreezerMonitor.Data\FreezerMonitor.Data.csproj", "{641B27EA-E69E-4826-92C6-7F1DE1C91455}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{641B27EA-E69E-4826-92C6-7F1DE1C91455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{641B27EA-E69E-4826-92C6-7F1DE1C91455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{641B27EA-E69E-4826-92C6-7F1DE1C91455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{641B27EA-E69E-4826-92C6-7F1DE1C91455}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
