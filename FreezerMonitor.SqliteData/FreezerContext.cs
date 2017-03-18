@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace FreezerMonitor.SqliteData
 {
-    public class FreezerContext : DbContext
+    public class SqliteFreezerContext : DbContext
     {
-        public FreezerContext(String connectionString)
+        public SqliteFreezerContext(String connectionString)
             : base(new SQLiteConnection() {ConnectionString = connectionString}, true)
         {
             Debug.WriteLine(connectionString);

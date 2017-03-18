@@ -12,7 +12,7 @@ namespace FreezerMonitor.TestConsole
     {
         static void Main(string[] args)
         {
-            using (var context = new FreezerContext("Data Source=C:\\temp\\freezer_temps.sqlite"))
+            using (var context = new SqliteFreezerContext("Data Source=C:\\temp\\freezer_temps.sqlite"))
             {
                 var sensors = context.TemperatureReadings
                     .OrderByDescending(r => r.Timestamp)

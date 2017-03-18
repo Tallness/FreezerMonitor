@@ -13,7 +13,7 @@ namespace FreezerMonitor.Web.Controllers
     {
         public ActionResult Index()
         {
-            using (var context = new FreezerContext("Data Source=C:\\temp\\freezer_temps.sqlite"))
+            using (var context = new SqliteFreezerContext("Data Source=C:\\temp\\freezer_temps.sqlite"))
             {
                 var startDate = new DateTime(2017,1,18);
                 var sensors = context.TemperatureReadings
