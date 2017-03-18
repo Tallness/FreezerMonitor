@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreezerMonitor.TestConsole"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreezerMonitor.Web", "FreezerMonitor.Web\FreezerMonitor.Web.csproj", "{8AC15399-A3C3-4108-A496-042631D4724E}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FreezerMonitor.Database", "FreezerMonitor.Database\FreezerMonitor.Database.sqlproj", "{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{8AC15399-A3C3-4108-A496-042631D4724E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AC15399-A3C3-4108-A496-042631D4724E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AC15399-A3C3-4108-A496-042631D4724E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10821EC3-F7B5-486B-8E3F-F17A1DDE342E}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
