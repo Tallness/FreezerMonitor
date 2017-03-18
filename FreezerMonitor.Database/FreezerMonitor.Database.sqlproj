@@ -62,7 +62,8 @@
     <Folder Include="Security\Schemas" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Freezer.TemperatureReadings.sql" />
+    <Build Include="Tables\Freezer.Readings.sql" />
     <Build Include="Security\Schemas\Freezer.sql" />
+    <Build Include="Tables\Freezer.Sensors.sql" />
   </ItemGroup>
 </Project>
