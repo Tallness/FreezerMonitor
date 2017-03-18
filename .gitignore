@@ -301,3 +301,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+FreezerMonitor.Python/client_secret.json
+FreezerMonitor.Python/freezer_temps.db
