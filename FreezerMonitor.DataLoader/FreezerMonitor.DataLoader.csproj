@@ -74,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FreezerMonitor.Data\FreezerMonitor.Data.csproj">
+      <Project>{641B27EA-E69E-4826-92C6-7F1DE1C91455}</Project>
+      <Name>FreezerMonitor.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FreezerMonitor.SqliteData\FreezerMonitor.SqliteData.csproj">
       <Project>{882BCEF0-49D1-4AFE-A785-2E6B4859B3D2}</Project>
       <Name>FreezerMonitor.SqliteData</Name>
