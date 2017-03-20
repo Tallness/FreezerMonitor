@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FreezerMonitor.Data.Entities
@@ -11,6 +12,7 @@ namespace FreezerMonitor.Data.Entities
         public decimal  Temperature { get; set; }
 
         public int            SensorID { get; set; }
+        [JsonIgnore]
         public virtual Sensor Sensor   { get; set; }
     }
 }

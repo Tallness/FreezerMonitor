@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using FreezerMonitor.SqliteData;
+using FreezerMonitor.Data.Entities;
 
 namespace FreezerMonitor.Web.Models
 {
     public class SensorReadingsViewModel
     {
-        public IList<IGrouping<String, TemperatureReading>> Sensors { get; set; }
+        public IList<IGrouping<int, Reading>> Sensors { get; set; }
     }
 }

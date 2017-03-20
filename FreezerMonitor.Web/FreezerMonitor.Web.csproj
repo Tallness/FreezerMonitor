@@ -132,6 +132,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SensorReadingsViewModel.cs" />
+    <Compile Include="Models\SensorsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +201,10 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FreezerMonitor.Data\FreezerMonitor.Data.csproj">
+      <Project>{641B27EA-E69E-4826-92C6-7F1DE1C91455}</Project>
+      <Name>FreezerMonitor.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FreezerMonitor.SqliteData\FreezerMonitor.SqliteData.csproj">
       <Project>{882bcef0-49d1-4afe-a785-2e6b4859b3d2}</Project>
       <Name>FreezerMonitor.SqliteData</Name>

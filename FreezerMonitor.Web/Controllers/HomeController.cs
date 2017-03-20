@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using FreezerMonitor.SqliteData;
+using FreezerMonitor.Data;
 using System.Net;
 using System.Net.Mime;
+using System.Data.Entity;
 
 namespace FreezerMonitor.Web.Controllers
 {
@@ -13,26 +14,34 @@ namespace FreezerMonitor.Web.Controllers
     {
         public ActionResult Index()
         {
-            using (var context = new SqliteFreezerContext("Data Source=C:\\temp\\freezer_temps.sqlite"))
+            using (var context = new FreezerContext())
             {
                 var startDate = new DateTime(2017,1,18);
-                var sensors = context.TemperatureReadings
-                    .Where(r => r.Timestamp >= startDate)
-                    .OrderBy(r => r.SensorID)
-                    .ThenBy(r => r.Timestamp)
-                    .GroupBy(r => r.SensorID)
+                var sensors = context.Sensors
                     .ToList();
-                return View(new Models.SensorReadingsViewModel { Sensors = sensors });
+                return View(new Models.SensorsViewModel { Sensors = sensors });
             }
         }
 
         
-        public ActionResult Log(String id)
+        public ActionResult Log(string id)
         {
             try
             {
-                var f = File(String.Format("~/{0}",id), MediaTypeNames.Text.Plain);
-                return f;
+                var startDate = DateTime.Parse("3/14/2017");
+                using (var db = new FreezerContext())
+                {
+                    var readings = db.Readings
+                        //.Include(r => r.Sensor)
+                        .Where(r => r.Sensor.SensorNumber == id && r.Time >= startDate)
+                        .Select(r => new
+                        {
+                            time = r.Time.ToString(),
+                            temperature = r.Temperature
+                        })
+                        .ToList();
+                    return Json(readings, JsonRequestBehavior.AllowGet);
+                }
             }
             catch (Exception ex)
             {
