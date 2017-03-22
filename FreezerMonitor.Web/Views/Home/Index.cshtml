@@ -1,4 +1,4 @@
-﻿@model FreezerMonitor.Web.Models.SensorReadingsViewModel
+﻿@model FreezerMonitor.Web.Models.SensorsViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -16,7 +16,7 @@
         <ul>
             @foreach (var sensor in Model.Sensors)
             {
-                <li>@sensor.Key</li>
+                <li>@sensor.Description</li>
             }
         </ul>
     </div>
@@ -34,28 +34,24 @@
         height = +svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var parseTime = d3.utcParse("%Y-%m-%dT%H:%M:%S.%L%Z");
+    var parseTime = d3.utcParse("%b %d %Y %H:%M%p");
+        //d3.utcParse("%Y-%m-%dT%H:%M:%S.%L%Z");
         //d3.timeParse("%m/%d/%Y %I:%M:%S %p");
 
     // Setup Axes and Line def
     var x = d3.scaleUtc().rangeRound([0, width]);
     var y = d3.scaleLinear().rangeRound([height, 0]);
     var line = d3.line()
-        .x(function (data) { return x(data.timestamp); })
+        .x(function (data) { return x(data.time); })
         .y(function (data) { return y(data.temperature); });
 
     // Parse file and display
-    d3.csv('@Url.Action("Log", "Home", new { id = "031685a74bff" })', function (data) {
-        //console.log(data);
-        data.timestamp = parseTime(data.timestamp);
-        data.temperature = +data.temperature;
-        return data;
-    }, function (error, data) {
+    d3.json('@Url.Action("Log", "Home", new { id = "031685a74bff" })', function (error, data) {
         if (error) throw error;
 
         //x.domain([new Date(2017, 1, 27, 0), new Date(2017, 2, 4, 0)]);
         y.domain([-10, 85]);
-        x.domain(d3.extent(data, function (d) { return d.timestamp; }));
+        x.domain(d3.extent(data, function (d) { return d.time; }));
         //y.domain(d3.extent(data, function (d) { return d.temperature; }));
 
         g.append("g")
@@ -84,12 +80,7 @@
             .attr("d", line);
     });
 
-    d3.csv('@Url.Action("Log", "Home", new { id = "03168a1eedff" })', function (data) {
-        console.log(data);
-        data.timestamp = parseTime(data.timestamp);
-        data.temperature = +data.temperature;
-        return data;
-    }, function (error, data) {
+    d3.json('@Url.Action("Log", "Home", new { id = "03168a1eedff" })', function (error, data) {
         if (error) throw error;
 
         g.append("path")
