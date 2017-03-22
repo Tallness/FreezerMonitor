@@ -15,6 +15,11 @@ namespace FreezerMonitor.Web.Controllers
     {
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult Chart()
+        {
             using (var context = new FreezerContext())
             {
                 var startDate = new DateTime(2017, 1, 18);
