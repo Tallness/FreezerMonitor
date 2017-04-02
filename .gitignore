@@ -303,3 +303,4 @@ $RECYCLE.BIN/
 *.lnk
 FreezerMonitor.Python/client_secret.json
 FreezerMonitor.Python/freezer_temps.db
+*.jfm
