@@ -14,7 +14,7 @@ namespace FreezerMonitor.DataLoader
         {
             using (var context = new FreezerContext())
             {
-                var lastReadingDate = context.Readings.Max(r => r.Time);
+                var lastReadingDate = context.Readings.Max(r => r.Time).ToLocalTime();
 
                 using (var sqliteContext = new SqliteFreezerContext("Data Source=C:\\temp\\freezer_temps.sqlite"))
                 {
@@ -28,12 +28,16 @@ namespace FreezerMonitor.DataLoader
                     var writtenRecordCount = 0;
                     foreach (var rawReading in rawReadings)
                     {
-                        context.Readings.Add(new Data.Entities.Reading()
+                        DateTime.SpecifyKind(rawReading.Timestamp, DateTimeKind.Utc);
+                        var reading = new Data.Entities.Reading()
                         {
                             SensorID = sensors[rawReading.SensorID],
-                            Time = rawReading.Timestamp.ToUniversalTime(),
+                            Time = rawReading.Timestamp.ToLocalTime(),
                             Temperature = rawReading.Temperature
-                        });
+                        };
+                        DateTime.SpecifyKind(reading.Time, DateTimeKind.Local);
+                        reading.Time = reading.Time.ToUniversalTime();
+                        context.Readings.Add(reading);
                         recordCount++;
 
                         if (recordCount >=100)
