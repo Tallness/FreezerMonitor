@@ -131,6 +131,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DashboardViewModel.cs" />
     <Compile Include="Models\SensorReadingsViewModel.cs" />
     <Compile Include="Models\SensorsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

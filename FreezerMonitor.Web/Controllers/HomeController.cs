@@ -5,19 +5,33 @@ using System.Web;
 using System.Web.Mvc;
 using FreezerMonitor.Data;
 using System.Net;
-using System.Net.Mime;
-using System.Data.Entity;
+using FreezerMonitor.Web.Models;
 using Newtonsoft.Json;
 
 namespace FreezerMonitor.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int days = 7)
         {
-            return View();
+            var startTime = DateTime.UtcNow.AddDays(days * -1);
+
+            using (var db = new FreezerContext())
+            {
+                var query = db.Readings
+                    .Where(r => r.Time >= startTime && r.Sensor.Description == "Freezer");
+
+                var model = new DashboardViewModel()
+                {
+                    DaysInPeriod = days,
+                    MaxTemp = Math.Round(query.Max(r => r.Temperature), 2),
+                    MinutesAboveFreezing = query.Count(r => r.Temperature > 32.0m) * 5
+                };
+                return View(model);
+            }
         }
 
+        [Route("Chart")]
         public ActionResult Chart()
         {
             using (var context = new FreezerContext())
