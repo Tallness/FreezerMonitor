@@ -22,3 +22,17 @@ select,
 textarea {
     max-width: 280px;
 }
+
+footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+
+svg text{
+    font-size: 2em;
+}
