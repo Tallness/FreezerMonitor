@@ -11,13 +11,24 @@ In the last <em>@Model.DaysInPeriod</em> Days:
 
 <div class="container">
     <div class="row">
-        <div id="maxTemp" class="col">
-            @*@Model.MaxTemp*@
+        <div class="col-xs-6 kpi">
+            <span class="kpi">@String.Format("{0:F1}°F", Model.MaxTemp)</span><br />
+            Max Temp
+        </div>
+        <div class="col-xs-6 kpi">
+            <span class="kpi">@Model.MinutesAboveFreezing min</span><br />
+            Above Freezing
         </div>
     </div>
-
-    <div id="timeTemp" class="row">
-        @*@Model.MinutesAboveFreezing (@Model.PortionOfTimeAboveFreezing.ToString("f"))*@
+    <div class="row">
+        <div class="col-xs-6 kpi">
+            <span class="kpi">@String.Format("{0:F1}°F", Model.LastTemp)</span><br />
+            Last Temp
+        </div>
+        <div class="col-xs-6 kpi">
+            <span class="kpi">@String.Format("{0:P1}", Model.PortionOfTimeAboveFreezing)</span><br />
+            Above Freezing
+        </div>
     </div>
 </div>
 
@@ -84,6 +95,6 @@ In the last <em>@Model.DaysInPeriod</em> Days:
 	          .text("@Model.MinutesAboveFreezing min");
     }
 
-    maxTempViz();
-    timeViz();
+    //maxTempViz();
+    //timeViz();
 </script>

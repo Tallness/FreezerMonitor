@@ -25,6 +25,7 @@ namespace FreezerMonitor.Web.Controllers
                 {
                     DaysInPeriod = days,
                     MaxTemp = Math.Round(query.Max(r => r.Temperature), 2),
+                    LastTemp = query.OrderByDescending(r => r.Time).FirstOrDefault().Temperature,
                     MinutesAboveFreezing = query.Count(r => r.Temperature > 32.0m) * 5
                 };
                 return View(model);
