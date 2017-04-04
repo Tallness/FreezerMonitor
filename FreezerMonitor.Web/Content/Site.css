@@ -25,6 +25,7 @@ textarea {
 
 footer {
     background-color: black;
+    color: white;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -35,4 +36,17 @@ footer {
 
 svg text{
     font-size: 2em;
+}
+
+div.kpi {
+    border: solid;
+    border-width: thin;
+    border-color: black;
+    text-align: center;
+    background-color: powderblue; /*rgba(64, 95, ED, 88);*/
+}
+
+div.kpi span{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
 }
