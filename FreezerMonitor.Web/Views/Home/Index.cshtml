@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-xs-6 kpi">
             <span class="kpi">@String.Format("{0:F1}°F", Model.MaxReading.Temperature)</span><br />
-            Max
+            @String.Format("Max ({0:F0} hrs ago)", (DateTime.Now - Model.MaxReading.Time.ToLocalTime()).TotalHours)
         </div>
         <div class="col-xs-6 kpi">
             <span class="kpi">@Model.MinutesAboveFreezing min</span><br />
@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-xs-6 kpi">
             <span class="kpi">@String.Format("{0:F1}°F", Model.LastReading.Temperature)</span><br />
-            Latest
+            @String.Format("Latest ({0:F0} hrs ago)", (DateTime.Now - Model.LastReading.Time.ToLocalTime()).TotalHours)
         </div>
         <div class="col-xs-6 kpi">
             <span class="kpi">@String.Format("{0:P1}", Model.PortionOfTimeAboveFreezing)</span><br />
