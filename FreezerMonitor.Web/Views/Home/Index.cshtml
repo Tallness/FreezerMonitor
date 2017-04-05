@@ -5,15 +5,15 @@
 }
 
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
-<h2>Dashboard</h2>
+@*<h2>Dashboard</h2>*@
 
-In the last <em>@Model.DaysInPeriod</em> Days:
+<h3>Last <strong>@Model.DaysInPeriod</strong> Days:</h3>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-6 kpi">
-            <span class="kpi">@String.Format("{0:F1}°F", Model.MaxTemp)</span><br />
-            Max Temp
+            <span class="kpi">@String.Format("{0:F1}°F", Model.MaxReading.Temperature)</span><br />
+            Max
         </div>
         <div class="col-xs-6 kpi">
             <span class="kpi">@Model.MinutesAboveFreezing min</span><br />
@@ -22,8 +22,8 @@ In the last <em>@Model.DaysInPeriod</em> Days:
     </div>
     <div class="row">
         <div class="col-xs-6 kpi">
-            <span class="kpi">@String.Format("{0:F1}°F", Model.LastTemp)</span><br />
-            Last Temp
+            <span class="kpi">@String.Format("{0:F1}°F", Model.LastReading.Temperature)</span><br />
+            Latest
         </div>
         <div class="col-xs-6 kpi">
             <span class="kpi">@String.Format("{0:P1}", Model.PortionOfTimeAboveFreezing)</span><br />
@@ -32,7 +32,7 @@ In the last <em>@Model.DaysInPeriod</em> Days:
     </div>
 </div>
 
-<script src="~/Scripts/d3/d3.js"></script>
+@*<script src="~/Scripts/d3/d3.js"></script>
 <script>
     var width,
 	    height = 150,
@@ -97,4 +97,4 @@ In the last <em>@Model.DaysInPeriod</em> Days:
 
     //maxTempViz();
     //timeViz();
-</script>
+</script>*@

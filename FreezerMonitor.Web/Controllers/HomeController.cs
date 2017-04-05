@@ -24,8 +24,8 @@ namespace FreezerMonitor.Web.Controllers
                 var model = new DashboardViewModel()
                 {
                     DaysInPeriod = days,
-                    MaxTemp = Math.Round(query.Max(r => r.Temperature), 2),
-                    LastTemp = query.OrderByDescending(r => r.Time).FirstOrDefault().Temperature,
+                    MaxReading = query.OrderByDescending(r => r.Temperature).FirstOrDefault(),
+                    LastReading = query.OrderByDescending(r => r.Time).FirstOrDefault(),
                     MinutesAboveFreezing = query.Count(r => r.Temperature > 32.0m) * 5
                 };
                 return View(model);
