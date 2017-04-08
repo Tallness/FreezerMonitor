@@ -7,6 +7,8 @@ using FreezerMonitor.Data;
 using System.Net;
 using FreezerMonitor.Web.Models;
 using Newtonsoft.Json;
+using FreezerMonitor.Data.Entities;
+using System.Net.Http;
 
 namespace FreezerMonitor.Web.Controllers
 {
@@ -68,6 +70,33 @@ namespace FreezerMonitor.Web.Controllers
             catch (Exception ex)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("readings/{sensorId}")]
+        public HttpResponseMessage Put(string sensorId, DateTime time, decimal temperature)
+        {
+            using (var db = new FreezerContext())
+            {
+                var sensor = db.Sensors.SingleOrDefault(s => s.SensorNumber == sensorId);
+
+                var newReading = new Reading()
+                {
+                    SensorID = sensor.ID,
+                    Time = time,
+                    Temperature = temperature
+                };
+                db.Readings.Add(newReading);
+                try
+                {
+                    db.SaveChanges();
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                }
+                catch (Exception ex)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.BadRequest);
+                }
             }
         }
 
