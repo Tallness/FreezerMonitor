@@ -30,7 +30,9 @@
             Above Freezing
         </div>
     </div>
-    <div class=" row btn-group" data-toggle="buttons">
+    @if (true)
+    {
+    <div class="row btn-group" data-toggle="buttons">
         <label class="btn btn-primary">
             <input type="radio" name="options" id="option1" autocomplete="off">Day
         </label>
@@ -40,6 +42,13 @@
         <label class="btn btn-primary">
             <input type="radio" name="options" id="option3" autocomplete="off">Month
         </label>
+    </div>
+    }
+
+    <div class="row btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default">Day</button>
+        <button type="button" class="btn btn-default">Week</button>
+        <button type="button" class="btn btn-default">Month</button>
     </div>
 </div>
 
