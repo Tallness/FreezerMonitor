@@ -304,3 +304,4 @@ $RECYCLE.BIN/
 FreezerMonitor.Python/client_secret.json
 FreezerMonitor.Python/freezer_temps.db
 *.jfm
+FreezerMonitor.Python/.vscode/
