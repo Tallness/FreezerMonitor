@@ -75,7 +75,7 @@ namespace FreezerMonitor.Web.Controllers
 
         [HttpPut]
         [Route("readings/{sensorId}")]
-        public HttpResponseMessage Put(string sensorId, DateTime time, decimal temperature)
+        public HttpResponseMessage LogReading(string sensorId, DateTime time, decimal temperature)
         {
             using (var db = new FreezerContext())
             {
