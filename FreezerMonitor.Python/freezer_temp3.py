@@ -20,7 +20,7 @@ def main():
     for dummy_i, sensor in enumerate(sensors):
         temperature = sensor.get_temperature(W1ThermSensor.DEGREES_F)
         status = log_reading(sensor.id, read_time, temperature)
-        log_to_sqlite(sensor.sensor_id, read_time, temperature)
+        log_to_sqlite(sensor.id, read_time, temperature)
         print status
 
 
