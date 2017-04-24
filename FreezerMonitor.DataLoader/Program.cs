@@ -19,7 +19,7 @@ namespace FreezerMonitor.DataLoader
                 using (var sqliteContext = new SqliteFreezerContext("Data Source=C:\\temp\\freezer_temps.sqlite"))
                 {
                     var rawReadings = sqliteContext.TemperatureReadings
-                        .Where(r => r.Timestamp > lastReadingDate)
+                        //.Where(r => r.Timestamp < lastReadingDate)
                         .OrderBy(r => r.Timestamp);
                     Console.WriteLine("{0} records found to import.", rawReadings.Count());
 
@@ -29,6 +29,8 @@ namespace FreezerMonitor.DataLoader
                     foreach (var rawReading in rawReadings)
                     {
                         DateTime.SpecifyKind(rawReading.Timestamp, DateTimeKind.Utc);
+                        rawReading.Timestamp.AddSeconds((rawReading.Timestamp.Second - 1) * -1);
+                        rawReading.Timestamp.AddMilliseconds(rawReading.Timestamp.Millisecond * -1);
                         var reading = new Data.Entities.Reading()
                         {
                             SensorID = sensors[rawReading.SensorID],
