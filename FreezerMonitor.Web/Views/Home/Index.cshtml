@@ -30,91 +30,30 @@
             Above Freezing
         </div>
     </div>
-    @if (true)
+    @if (false)
     {
     <div class="row btn-group" data-toggle="buttons">
-        <label class="btn btn-primary">
+        <label class="btn btn-default">
             <input type="radio" name="options" id="option1" autocomplete="off">Day
         </label>
-        <label class="btn btn-primary active">
+        <label class="btn btn-default active">
             <input type="radio" name="options" id="option2" autocomplete="off" checked>Week
         </label>
-        <label class="btn btn-primary">
+        <label class="btn btn-default">
             <input type="radio" name="options" id="option3" autocomplete="off">Month
         </label>
     </div>
     }
 
     <div class="row btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default">Day</button>
-        <button type="button" class="btn btn-default">Week</button>
-        <button type="button" class="btn btn-default">Month</button>
+        <button type="button" class="btn btn-default" onmousedown="changePeriod(1)">Day</button>
+        <button type="button" class="btn btn-default" onmousedown="changePeriod(7)">Week</button>
+        <button type="button" class="btn btn-default" onmousedown="changePeriod(30)">Month</button>
     </div>
 </div>
 
-@*<script src="~/Scripts/d3/d3.js"></script>
 <script>
-    var width,
-	    height = 150,
-	    outerRadius,// = Math.min(width, height) / 2,
-	    innerRadius// = outerRadius * .666
-    //color = d3.scale.category20()    //builtin range of colors
-    ;
-
-    width = d3.select('#maxTemp').node().offsetWidth;
-    outerRadius = Math.min(width, height) / 2;
-    innerRadius = outerRadius * .666;
-
-    function maxTempViz() {
-        var maxTemp = d3.select("#maxTemp")
-            .append("svg:svg")
-            .attr("width", width)
-            .attr("height", height);
-        var g = maxTemp.append("svg:g")
-            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-        var arc = d3.arc()
-            .outerRadius(outerRadius)
-            .innerRadius(innerRadius)
-            .startAngle(0)
-            .endAngle(2 * Math.PI);
-
-        var background = g.append("path")
-            //.datum({ endAngle: tau })
-            .style("fill", "lightblue")
-            .attr("d", arc);
-
-        g.append("svg:text")
-	     	    .attr("dy", ".35em")
-	          .attr("text-anchor", "middle")
-	          .text("@Model.MaxTemp\u00B0F");
+    function changePeriod(days) {
+        console.log('Days: ' + days);
     }
-
-    function timeViz() {
-        var timeTemp = d3.select("#timeTemp")
-            .append("svg:svg")
-            .attr("width", width)
-            .attr("height", height);
-        var g = timeTemp.append("svg:g")
-            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-        var arc = d3.arc()
-            .outerRadius(outerRadius)
-            .innerRadius(innerRadius)
-            .startAngle(0)
-            .endAngle(2 * Math.PI);
-
-        var background = g.append("path")
-            //.datum({ endAngle: tau })
-            .style("fill", "blue")
-            .attr("d", arc);
-
-        g.append("svg:text")
-	     	    .attr("dy", ".35em")
-	          .attr("text-anchor", "middle")
-	          .text("@Model.MinutesAboveFreezing min");
-    }
-
-    //maxTempViz();
-    //timeViz();
-</script>*@
+</script>
