@@ -34,6 +34,27 @@ namespace FreezerMonitor.Web.Controllers
             }
         }
 
+        [Route("dashboard")]
+        public JsonResult DashboardData(int days = 7)
+        {
+            var startTime = DateTime.UtcNow.AddDays(days * -1);
+
+            using (var db = new FreezerContext())
+            {
+                var query = db.Readings
+                    .Where(r => r.Time >= startTime && r.Sensor.Description == "Freezer");
+
+                var model = new DashboardViewModel()
+                {
+                    DaysInPeriod = days,
+                    MaxReading = query.OrderByDescending(r => r.Temperature).FirstOrDefault(),
+                    LastReading = query.OrderByDescending(r => r.Time).FirstOrDefault(),
+                    MinutesAboveFreezing = query.Count(r => r.Temperature > 32.0m) * 5
+                };
+                return new JsonNetResult() { Data = model };
+            }
+        }
+
         [Route("Chart")]
         public ActionResult Chart()
         {
