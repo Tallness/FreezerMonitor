@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-xs-6 kpi">
             <span id="maxTemp" class="kpi">@String.Format("{0:F1}°F", Model.MaxReading.Temperature)</span><br />
-            Max (<span id="maxTempTime" class="plain">@String.Format("{0:F0}", (DateTime.Now - Model.MaxReading.Time.ToLocalTime()).TotalHours)</span> hrs ago)
+            Max (<span id="maxTempTime" class="plain">@String.Format("{0:F0}", (DateTime.Now - Model.MaxReading.Time.ToLocalTime()).TotalHours)</span>)
         </div>
         <div class="col-xs-6 kpi">
             <span id="timeAbove" class="kpi">@Model.MinutesAboveFreezing min</span><br />
@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-xs-6 kpi">
             <span id="lastTemp" class="kpi">@String.Format("{0:F1}°F", Model.LastReading.Temperature)</span><br />
-            <span class="plain">@String.Format("Latest ({0:F0} min ago)", (DateTime.Now - Model.LastReading.Time.ToLocalTime()).TotalMinutes)</span>
+            Latest (<span id="lastTempTime" class="plain">@String.Format("{0:F0}", (DateTime.Now - Model.LastReading.Time.ToLocalTime()).TotalMinutes)</span>)
 </div>
         <div class="col-xs-6 kpi">
             <span id="percentAbove" class="kpi">@String.Format("{0:P1}", Model.PortionOfTimeAboveFreezing)</span><br />
@@ -72,8 +72,8 @@
 
             $('#maxTemp').text(data.MaxReading.Temperature);
             $('#lastTemp').text(data.LastReading.Temperature);
-            $('#maxTempTime').text(new Date() - data.MaxReading.Time);
-            $('#lastTempTime').text(new Date() - data.LastReading.Time);
+            $('#maxTempTime').text(moment(data.MaxReading.Time + 'Z').fromNow());
+            $('#lastTempTime').text(moment(data.LastReading.Time + 'Z').fromNow());
         });
     }
 </script>
