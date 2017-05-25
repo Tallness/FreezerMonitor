@@ -6,6 +6,7 @@
 
 @section scripts {
     @Scripts.Render("~/Scripts/moment.js")
+    @Scripts.Render("~/Scripts/numeral/numeral.js")
 }
 
 @if (false)
@@ -68,10 +69,10 @@
             console.log(data);
             $('#periodLength').text(data.DaysInPeriod);
             $('#timeAbove').text(data.MinutesAboveFreezing + ' min');
-            $('#percentAbove').text(data.PortionOfTimeAboveFreezing + '%');
+            $('#percentAbove').text(numeral(data.PortionOfTimeAboveFreezing).format('0.0 %'));
 
-            $('#maxTemp').text(data.MaxReading.Temperature);
-            $('#lastTemp').text(data.LastReading.Temperature);
+            $('#maxTemp').text(numeral(data.MaxReading.Temperature).format('0.0') + '°F');
+            $('#lastTemp').text(numeral(data.LastReading.Temperature).format('0.0') + '°F');
             $('#maxTempTime').text(moment(data.MaxReading.Time + 'Z').fromNow());
             $('#lastTempTime').text(moment(data.LastReading.Time + 'Z').fromNow());
         });
