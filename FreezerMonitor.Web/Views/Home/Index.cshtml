@@ -4,6 +4,10 @@
     ViewBag.Title = "Dashboard";
 }
 
+@section scripts {
+    @Scripts.Render("~/Scripts/moment.js")
+}
+
 @if (false)
 {
     <script src="~/Scripts/jquery-3.1.1.intellisense.js"></script>
@@ -63,10 +67,13 @@
         $.getJSON('../dashboard?days='+ days, function (data) {
             console.log(data);
             $('#periodLength').text(data.DaysInPeriod);
+            $('#timeAbove').text(data.MinutesAboveFreezing + ' min');
+            $('#percentAbove').text(data.PortionOfTimeAboveFreezing + '%');
+
             $('#maxTemp').text(data.MaxReading.Temperature);
             $('#lastTemp').text(data.LastReading.Temperature);
             $('#maxTempTime').text(new Date() - data.MaxReading.Time);
-            $('#periodLength').text(data.DaysInPeriod);
+            $('#lastTempTime').text(new Date() - data.LastReading.Time);
         });
     }
 </script>
