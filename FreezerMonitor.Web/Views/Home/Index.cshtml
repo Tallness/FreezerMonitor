@@ -4,29 +4,34 @@
     ViewBag.Title = "Dashboard";
 }
 
+@if (false)
+{
+    <script src="~/Scripts/jquery-3.1.1.intellisense.js"></script>
+}
+
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
 @*<h2>Dashboard</h2>*@
 
-<h3>Last <strong>@Model.DaysInPeriod</strong> Days:</h3>
+<h3>Last <strong id="periodLength">@Model.DaysInPeriod</strong> Days:</h3>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-6 kpi">
-            <span class="kpi">@String.Format("{0:F1}°F", Model.MaxReading.Temperature)</span><br />
-            @String.Format("Max ({0:F0} hrs ago)", (DateTime.Now - Model.MaxReading.Time.ToLocalTime()).TotalHours)
+            <span id="maxTemp" class="kpi">@String.Format("{0:F1}°F", Model.MaxReading.Temperature)</span><br />
+            Max (<span id="maxTempTime" class="plain">@String.Format("{0:F0}", (DateTime.Now - Model.MaxReading.Time.ToLocalTime()).TotalHours)</span> hrs ago)
         </div>
         <div class="col-xs-6 kpi">
-            <span class="kpi">@Model.MinutesAboveFreezing min</span><br />
+            <span id="timeAbove" class="kpi">@Model.MinutesAboveFreezing min</span><br />
             Above Freezing
         </div>
     </div>
     <div class="row">
         <div class="col-xs-6 kpi">
-            <span class="kpi">@String.Format("{0:F1}°F", Model.LastReading.Temperature)</span><br />
-            @String.Format("Latest ({0:F0} min ago)", (DateTime.Now - Model.LastReading.Time.ToLocalTime()).TotalMinutes)
-        </div>
+            <span id="lastTemp" class="kpi">@String.Format("{0:F1}°F", Model.LastReading.Temperature)</span><br />
+            <span class="plain">@String.Format("Latest ({0:F0} min ago)", (DateTime.Now - Model.LastReading.Time.ToLocalTime()).TotalMinutes)</span>
+</div>
         <div class="col-xs-6 kpi">
-            <span class="kpi">@String.Format("{0:P1}", Model.PortionOfTimeAboveFreezing)</span><br />
+            <span id="percentAbove" class="kpi">@String.Format("{0:P1}", Model.PortionOfTimeAboveFreezing)</span><br />
             Above Freezing
         </div>
     </div>
@@ -55,6 +60,13 @@
 <script>
     function changePeriod(days) {
         console.log('Days: ' + days);
-        
+        $.getJSON('../dashboard?days='+ days, function (data) {
+            console.log(data);
+            $('#periodLength').text(data.DaysInPeriod);
+            $('#maxTemp').text(data.MaxReading.Temperature);
+            $('#lastTemp').text(data.LastReading.Temperature);
+            $('#maxTempTime').text(new Date() - data.MaxReading.Time);
+            $('#periodLength').text(data.DaysInPeriod);
+        });
     }
 </script>

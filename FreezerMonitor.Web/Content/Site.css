@@ -46,7 +46,7 @@ div.kpi {
     background-color: powderblue; /*rgba(64, 95, ED, 88);*/
 }
 
-div.kpi span{
+div.kpi span:not(.plain){
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: x-large;
 }
