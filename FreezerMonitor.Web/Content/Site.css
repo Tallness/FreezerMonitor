@@ -50,3 +50,8 @@ div.kpi span:not(.plain){
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: x-large;
 }
+
+h3 {
+    display: inline-block;
+    margin-right: 20px;
+}

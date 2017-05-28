@@ -17,7 +17,20 @@
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
 @*<h2>Dashboard</h2>*@
 
-<h3>Last <strong id="periodLength"></strong> Days:</h3>
+<h3>Last</h3>
+<div id="period" class="row btn-group" data-toggle="buttons">
+    <label class="btn btn-default">
+        <input type="radio" name="options" id="optionDay" autocomplete="off" value="1">Day
+    </label>
+    <label class="btn btn-default active">
+        <input type="radio" name="options" id="optionWeek" autocomplete="off" value="7" checked>Week
+    </label>
+    <label class="btn btn-default">
+        <input type="radio" name="options" id="optionMonth" autocomplete="off" value="30">Month
+    </label>
+</div>
+    @*<strong id="periodLength"></strong> Days:*@</h3>
+
 
 <div class="container">
     <div class="row">
@@ -40,26 +53,9 @@
             Above Freezing
         </div>
     </div>
-    @if (false)
+    @if (true)
     {
-    <div class="row btn-group" data-toggle="buttons">
-        <label class="btn btn-default">
-            <input type="radio" name="options" id="option1" autocomplete="off">Day
-        </label>
-        <label class="btn btn-default active">
-            <input type="radio" name="options" id="option2" autocomplete="off" checked>Week
-        </label>
-        <label class="btn btn-default">
-            <input type="radio" name="options" id="option3" autocomplete="off">Month
-        </label>
-    </div>
     }
-
-    <div class="row btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default" onmousedown="changePeriod(1)">Day</button>
-        <button type="button" class="btn btn-default" onmousedown="changePeriod(7)">Week</button>
-        <button type="button" class="btn btn-default" onmousedown="changePeriod(30)">Month</button>
-    </div>
 </div>
 
 <script>    
@@ -77,6 +73,10 @@
             $('#lastTempTime').text(moment(data.LastReading.Time + 'Z').fromNow());
         });
     }
+
+    $("#period :input").change(function () {
+        changePeriod(this.value);
+    });
 
     $(document).ready(function () {
         changePeriod(7);
