@@ -17,26 +17,26 @@
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
 @*<h2>Dashboard</h2>*@
 
-<h3>Last <strong id="periodLength">@Model.DaysInPeriod</strong> Days:</h3>
+<h3>Last <strong id="periodLength"></strong> Days:</h3>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-6 kpi">
-            <span id="maxTemp" class="kpi">@String.Format("{0:F1}°F", Model.MaxReading.Temperature)</span><br />
-            Max (<span id="maxTempTime" class="plain">@String.Format("{0:F0}", (DateTime.Now - Model.MaxReading.Time.ToLocalTime()).TotalHours)</span>)
+            <span id="maxTemp" class="kpi"></span><br />
+            Max (<span id="maxTempTime" class="plain"></span>)
         </div>
         <div class="col-xs-6 kpi">
-            <span id="timeAbove" class="kpi">@Model.MinutesAboveFreezing min</span><br />
+            <span id="timeAbove" class="kpi"></span><br />
             Above Freezing
         </div>
     </div>
     <div class="row">
         <div class="col-xs-6 kpi">
-            <span id="lastTemp" class="kpi">@String.Format("{0:F1}°F", Model.LastReading.Temperature)</span><br />
-            Latest (<span id="lastTempTime" class="plain">@String.Format("{0:F0}", (DateTime.Now - Model.LastReading.Time.ToLocalTime()).TotalMinutes)</span>)
+            <span id="lastTemp" class="kpi"></span><br />
+            Latest (<span id="lastTempTime" class="plain"></span>)
 </div>
         <div class="col-xs-6 kpi">
-            <span id="percentAbove" class="kpi">@String.Format("{0:P1}", Model.PortionOfTimeAboveFreezing)</span><br />
+            <span id="percentAbove" class="kpi"></span><br />
             Above Freezing
         </div>
     </div>
@@ -62,11 +62,11 @@
     </div>
 </div>
 
-<script>
+<script>    
     function changePeriod(days) {
-        console.log('Days: ' + days);
+        //console.log('Days: ' + days);
         $.getJSON('../dashboard?days='+ days, function (data) {
-            console.log(data);
+            //console.log(data);
             $('#periodLength').text(data.DaysInPeriod);
             $('#timeAbove').text(data.MinutesAboveFreezing + ' min');
             $('#percentAbove').text(numeral(data.PortionOfTimeAboveFreezing).format('0.0 %'));
@@ -77,4 +77,8 @@
             $('#lastTempTime').text(moment(data.LastReading.Time + 'Z').fromNow());
         });
     }
+
+    $(document).ready(function () {
+        changePeriod(7);
+    });
 </script>
